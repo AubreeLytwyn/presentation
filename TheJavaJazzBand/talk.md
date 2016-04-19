@@ -4,7 +4,7 @@
 * Lambda: Clear and concise way to represent a method interface using an expression
 * Closures: Strictly speaking a closure is a Lambda implementation that has all free variables bound to an environment giving them a value. Lambda expressions are implemented using closures and therefore the terms are used interchangeably.
 * “But as I learned more about the subtleties of the changes, it became clear that an entire new book (Mastering Lambdas) was needed” --Maurice Naftalin (renowned author in the java community)
-* By: Austin Russell, Aubree Lytwyn, Matthew Uhlar
+* By: Austin Russell, Aubree Lytwyn, Matthew Uhlar, Ryan Smith
 
 #Proposal
 * Java has a form of closures: anonymous inner classes
