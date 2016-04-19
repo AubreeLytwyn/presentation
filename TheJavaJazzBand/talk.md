@@ -114,7 +114,7 @@ public interface Runnable { void run(); }
 Runnable r1 = new Runnable(){
     @Override
     Public void run(){
-    System.out.println(“Hello world one!”);
+        System.out.println(“Hello world one!”);
     }
 };
 ```
@@ -146,26 +146,25 @@ List<T> someList = ...
 
 class compareElements implements comparator<T> {
     @override
-    Public bool compare(T elem1, T elem2) {
-        return elem1.getField().compareTo(elem2.getField())
+    Public bool compare(T e1, T e2) {
+        return e1.field().compareTo(e2.field())
     }
 }
 
-Collections.sort(someList, new compareElements())
+collect.sort(someList, new compareElements())
 ```
 # Evolution of a Lambda (Intermediate)
 
 ```Java
 List<T> someList = ...
 
-Collections.sort(someList, (T elem1, T elem2){ return elem1.getField().compareTo(elem2.getField());})
+collect.sort(someList, (T e1, T e2){ return e1.field().compareTo(e2.field());})
 ```
 * Better, more concise. However still room for improvement
 
 ```Java
 List<T> someList = ...
-
-Collections.sort(someList, (T elem1, T elem2) -> elem1.getField().compareTo(elem2.getField()))
+collect.sort(someList,(T e1, T e2) -> e1.field().compareTo(e2.field()))
 ```
 * We can do better still...
 
@@ -179,6 +178,7 @@ List<T> someList = ...
 
 Collections.sort(someList, (elem1, elem2) -> getField().compareTo(elem2.getField()))
 ```
+
 #API's (Problems)
 * Problems with API's
     + API classes like CallBackHandler, Runnable, etc.. use single abstract method
