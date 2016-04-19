@@ -1,10 +1,11 @@
 #Lambda Expressions in Java 8
-![alt text](http://blog.arungupta.me/wp-content/uploads/2014/03/java8-logo.png)
+![alt text](http://info.digitalroute.com/hs-fs/hub/376486/file-2604756124-png/Campaigns/Release_7.1/java8-logo.png?t=1460711448762&width=50)
 * Lambda also Known as closures is a new expression introduced in JDK 8 using Netbeans 7.4 IDE
 * Lambda: Clear and concise way to represent a method interface using an expression
 * Closures: Strictly speaking a closure is a Lambda implementation that has all free variables bound to an environment giving them a value. Lambda expressions are implemented using closures and therefore the terms are used interchangeably.
 * “But as I learned more about the subtleties of the changes, it became clear that an entire new book (Mastering Lambdas) was needed” --Maurice Naftalin (renowned author in the java community)
 * By: Austin Russell, Aubree Lytwyn, Matthew Uhlar, Ryan Smith
+=
 
 #Proposal
 * Java has a form of closures: anonymous inner classes
@@ -13,7 +14,7 @@
     + Inability to capture non-final local variables -> Allow compiler capture of effectively final local variables
     + Transparency issues surrounding the meaning of return, break, continue and ‘this’ -> Making ‘this’ lexically scoped
     + No nonlocal control flow operators -> Not Addressed
-
+    
 #Proposal
 * Lambda Expressions
     + Aimed at correcting the vertical problem with API classes and anonymous inner functions
@@ -40,13 +41,15 @@
     + Method or constructor arguments where target type is the type of the parameter
     + Lambda expression bodies for which the target type is the type of the body
     ```Java
-    Callable<Runnable> c = () -> () -> system.out.println(“hi”);};
+    Callable<Runnable> c = () ->
+     () -> system.out.println(“hi”);};
     ```
     + Target type being Callable<Runnable> and the the lambda body is the function type of Runnable which takes no arguments and returns no values
     + The expression does not allow for ambiguity example
     ```Java
-         Object o = () -> {system.out.println(“hi”);};
-         Object o = (Runnable) () -> {system.out.println(“hi”);};
+    Object o = () -> {system.out.println(“hi”);};
+    Object o = (Runnable) () -> 
+    {system.out.println(“hi”);};
     ```
 
 #Scoping Rules
@@ -78,7 +81,8 @@ public interface Runnable { void run(); }
 * Basic syntax
     + (parameters) -> expression
     ```Java
-    (int x, int y) -> x+y // takes two integers and returns their sum
+    // takes two integers and returns their sum
+    (int x, int y) -> x+y 
     ```
 
 #Anonymous Inner Class (AIC)
@@ -107,13 +111,15 @@ Runnable r1 = new Runnable(){
 ```
 
 ```Java
-Runnable r2 = () -> System.out.println(“Hello world two!”);
+Runnable r2 = () -> 
+ System.out.println(“Hello world two!”);
 ```
 
 # Comparator Lambda
 * used for sorting collections
 ```java
-collections.sort(personList, (p1, p2) -> p2.getSurName().compareTo(p1.getSurName()));
+collections.sort(personList, (p1, p2) -> 
+ p2.getSurName().compareTo(p1.getSurName()));
 ```
 
 # Listener Lambda
@@ -132,10 +138,11 @@ collections.sort(personList, (p1, p2) -> p2.getSurName().compareTo(p1.getSurName
 List<T> someList = ...
 
 class compareElements implements comparator<T> {
-    @override
-    Public bool compare(T elem1, T elem2) {
-        return elem1.getField().compareTo(elem2.getField())
-    }
+  @override
+  Public bool compare(T elem1, T elem2) {
+    return elem1.getField().compareTo(
+     elem2.getField())
+  }
 }
 
 Collections.sort(someList, new compareElements())
@@ -145,14 +152,17 @@ Collections.sort(someList, new compareElements())
 ```Java
 List<T> someList = ...
 
-Collections.sort(someList, (T elem1, T elem2){ return elem1.getField().compareTo(elem2.getField());})
+Collections.sort(someList, (T elem1, T elem2){ 
+  return elem1.getField().compareTo(
+   elem2.getField());})
 ```
 * Better, more concise. However still room for improvement
 
 ```Java
 List<T> someList = ...
 
-Collections.sort(someList, (T elem1, T elem2) -> elem1.getField().compareTo(elem2.getField()))
+Collections.sort(someList, (T elem1, T elem2) -> 
+ elem1.getField().compareTo(elem2.getField()))
 ```
 * We can do better still...
 
@@ -164,7 +174,8 @@ Collections.sort(someList, (T elem1, T elem2) -> elem1.getField().compareTo(elem
 ```Java
 List<T> someList = ...
 
-Collections.sort(someList, (elem1, elem2) -> getField().compareTo(elem2.getField()))
+Collections.sort(someList, (elem1, elem2) -> 
+ getField().compareTo(elem2.getField()))
 ```
 #API's (Problems)
 * Problems with API's
@@ -184,7 +195,8 @@ Collections.sort(someList, (elem1, elem2) -> getField().compareTo(elem2.getField
     + Replace machinery of anonymous inner classes with a simpler mechanism by adding function types to the language
     + Simplified to 
     ```Java
-    CallBackHandler cd = #{ c -> System.out.println("success")};
+    CallBackHandler cd = #{ c -> 
+     System.out.println("success")};
     ```
 
 #Summary
@@ -195,11 +207,11 @@ Collections.sort(someList, (elem1, elem2) -> getField().compareTo(elem2.getField
 
 #References
 * References
-    + http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/Lambda-QuickStart/index.html
-    + http://openjdk.java.net/projects/lambda/ 
-    + http://www.lambdafaq.org/ 
-    + https://www.jcp.org/en/jsr/proposalDetails?id=335 
-    + http://cr.openjdk.java.net/~briangoetz/lambda/lambda-state-3.html 
-    + http://stackoverflow.com/questions/22637900/java8-lambdas-vs-anonymous-classes 
+    + [Oracle.com](http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/Lambda-QuickStart/index.html)
+    + [Lambdafaq.org](http://www.lambdafaq.org/)
+    + [JCP.org](https://www.jcp.org/en/jsr/proposalDetails?id=335 )
+    + [openjdk.java.net](http://openjdk.java.net/projects/lambda/)
+    + [cr.openjdk.java.net](http://cr.openjdk.java.net/~briangoetz/lambda/lambda-state-3.html)
+    + [Stackoverflow.com](http://stackoverflow.com/questions/22637900/java8-lambdas-vs-anonymous-classes)
 * Useful links
-    + https://www.youtube.com/watch?v=a450CqNXFgs (Lambda Walkthrough)
+    + [YouTube Lambda Walkthrough](https://www.youtube.com/watch?v=a450CqNXFgs)
