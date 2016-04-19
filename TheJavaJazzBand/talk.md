@@ -24,3 +24,45 @@ def blah():
 * Good luck with your presentation!
 
 
+# Thirteenth slide
+
+* Naive long form variation
+
+```Java
+List<T> someList = ...
+
+class compareElements implements comparator<T> {
+    @override
+    Public bool compare(T elem1, T elem2) {
+        return elem1.getField().compareTo(elem2.getField())
+    }
+}
+
+Collections.sort(someList, new compareElements())
+```
+# Fourteenth slide
+
+```Java
+List<T> someList = ...
+
+Collections.sort(someList, (T elem1, T elem2){ return elem1.getField().compareTo(elem2.getField());})
+```
+* Better, more concise. However still room for improvement
+
+```Java
+List<T> someList = ...
+
+Collections.sort(someList, (T elem1, T elem2) -> elem1.getField().compareTo(elem2.getField()))
+```
+* We can do better still...
+
+# Fifteenth slide
+
+* Final lambda
+* Types can be inferred from interface
+
+```Java
+List<T> someList = ...
+
+Collections.sort(someList, (elem1, elem2) -> getField().compareTo(elem2.getField()))
+```
