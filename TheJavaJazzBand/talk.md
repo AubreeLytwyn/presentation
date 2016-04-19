@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #Lambda Expressions in Java 8
 ![alt text](http://info.digitalroute.com/hs-fs/hub/376486/file-2604756124-png/Campaigns/Release_7.1/java8-logo.png?t=1460711448762&width=50)
 * Lambda also Known as closures is a new expression introduced in JDK 8 using Netbeans 7.4 IDE
@@ -148,26 +147,22 @@ class compareElements implements comparator<T> {
 
 Collections.sort(someList, new compareElements())
 ```
-=======
->>>>>>> fdae09621509da916be8a382410bc70fbc32180d
 # Evolution of a Lambda (Intermediate)
 
 ```Java
 List<T> someList = ...
 
-<<<<<<< HEAD
+
 Collections.sort(someList, (T elem1, T elem2){ 
   return elem1.getField().compareTo(
    elem2.getField());})
-=======
 collect.sort(someList, (T e1, T e2){ return e1.field().compareTo(e2.field());})
->>>>>>> fdae09621509da916be8a382410bc70fbc32180d
 ```
 * Better, more concise. However still room for improvement
 
 ```Java
 List<T> someList = ...
-<<<<<<< HEAD
+
 
 Collections.sort(someList, (T elem1, T elem2) -> 
  elem1.getField().compareTo(elem2.getField()))
@@ -215,16 +210,12 @@ Collections.sort(someList, (elem1, elem2) ->
 
 #References
 * References
-    + [Oracle.com](http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/Lambda-QuickStart/index.html)
-    + [Lambdafaq.org](http://www.lambdafaq.org/)
-    + [JCP.org](https://www.jcp.org/en/jsr/proposalDetails?id=335 )
-    + [openjdk.java.net](http://openjdk.java.net/projects/lambda/)
-    + [cr.openjdk.java.net](http://cr.openjdk.java.net/~briangoetz/lambda/lambda-state-3.html)
-    + [Stackoverflow.com](http://stackoverflow.com/questions/22637900/java8-lambdas-vs-anonymous-classes)
+    + http://www.oracle.com/webfolder/technetwork/tutorials/
+       obe/java/Lambda-QuickStart/index.html
+    + http://www.lambdafaq.org/
+    + https://www.jcp.org/en/jsr/proposalDetails?id=335
+    + http://openjdk.java.net/projects/lambda/
+    + http://cr.openjdk.java.net/~briangoetz/lambda/lambda-state-3.html
+    + http://stackoverflow.com/questions/22637900/java8-lambdas-vs-anonymous-classes
 * Useful links
-    + [YouTube Lambda Walkthrough](https://www.youtube.com/watch?v=a450CqNXFgs)
-=======
-collect.sort(someList,(T e1, T e2) -> e1.field().compareTo(e2.field()))
-```
-
->>>>>>> fdae09621509da916be8a382410bc70fbc32180d
+    + https://www.youtube.com/watch?v=a450CqNXFgs
