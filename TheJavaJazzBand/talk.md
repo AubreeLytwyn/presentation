@@ -10,28 +10,36 @@
 * Java has a form of closures: anonymous inner classes
 * Reasons for proposal
     + Bulky syntax -> Addressed substantially for improvements
-    + Inability to capture non-final local variables -> Allow compiler capture of effectively final local variables
-    + Transparency issues surrounding the meaning of return, break, continue and ‘this’ -> Making ‘this’ lexically scoped
+    + Inability to capture non-final local variables
+        + Allow compiler capture of effectively final local variables
+    + Transparency issues: return, break, continue, 'this'
+        + Making ‘this’ lexically scoped
     + No nonlocal control flow operators -> Not Addressed
 
 #Proposal
 * Lambda Expressions
-    + Aimed at correcting the vertical problem with API classes and anonymous inner functions
+    + Correcting the vertical problem with API classes and anonymous inner functions
     + Disadvantages
         + Mixing structural and nominal types
         + Divergence of library styles from callback objects to function types
-        + Generic types are erased, which would expose additional places where developers are exposed to erasure
+        + Generic types are erased
+            + show where developers are exposed to erasure
 
 #What is Lambda used for?
 * Improve libraries to make iterations, filtering and data extraction easier
     + Main Example:  Collection Library
         + Concurrency features improve performance in a multicore environment
-        + lambdas can be understood as a kind of anonymous method with a more compact syntax that also allows the omission of modifiers, return type, and in some cases parameter types as well.
+        + lambdas: anonymous method, compact syntax 
+            + omission of modifiers, return type, parameter types
 
 #Lambda Type
 * What is the type
-    + The target type for a lambda expression Must be a functional interface and be compatible with the target type. Same parameter type as interface function type.
-    + Lambda can be used recursively when you are doing variable assignment. Specifically static variable assignment because of the assignment before use rule for local variables
+    + The target type must be a functional interface
+        + Compatible with the target type. 
+        + Same parameter type as interface function type.
+    + Lambda can be used recursively when you are doing variable assignment. 
+        + Static variable assignment
+        + Assignment before use rule for local variables
 
 #Where can you use lambda Expressions
 * Any context that has a target type
@@ -42,16 +50,20 @@
     ```Java
     Callable<Runnable> c = () -> () -> system.out.println(“hi”);};
     ```
-    + Target type being Callable<Runnable> and the the lambda body is the function type of Runnable which takes no arguments and returns no values
-    + The expression does not allow for ambiguity example
+    + Target type being Callable<Runnable> 
+        + lambda body is the function type of Runnable 
+        + Takes no arguments and returns no values
+    + The expression does not allow for ambiguity 
     ```Java
          Object o = () -> {system.out.println(“hi”);};
          Object o = (Runnable) () -> {system.out.println(“hi”);};
     ```
 
 #Scoping Rules
-* Names in the body of a lambda are interpreted exactly as in the environment that it resides in. except for new names for the lambda expressions formal parameters. 
-* Formal parameters follow the same rules as method parameters for shadowing class and instance variables
+* Names in the body of a lambda interpreted exactly as in its environment 
+    + except for new names for the lambda expressions formal parameters. 
+* Formal parameters follow the same rules as method parameters 
+    + Shadowing class and instance variables
 * Example
     + Can do:
     ```Java
@@ -66,8 +78,9 @@
 
 #Functional Interfaces previously/currently known as Single Abstract Method (SAM)
 * An expression whose type can be used for a method parameter when a lambda is supplied as the actual argument
-* An interface that has exactly one explicitly declared abstract method. This is necessary because an interface may have non-abstract default methods
-* Because a functional interface contains only one abstract method, you can omit the name of that method when you implement it
+* An interface that has exactly one explicitly declared abstract method. 
+* This is necessary because an interface may have non-abstract default methods
+* Functional interface contains only one abstract method, can omit name of method when implemented
 * Example 
 ```java
 public interface Runnable { void run(); }
@@ -168,7 +181,7 @@ Collections.sort(someList, (elem1, elem2) -> getField().compareTo(elem2.getField
 ```
 #API's (Problems)
 * Problems with API's
-    + API classes like CallBackHandler, Runnable, Callable, EventHandler or Comparator use single abstract method
+    + API classes like CallBackHandler, Runnable, etc.. use single abstract method
     + To utilize these you often have to write an anonymous inner class like so:
     ```Java
     foo.doSomething(new CallBackHandler()) {
@@ -177,11 +190,12 @@ Collections.sort(someList, (elem1, elem2) -> getField().compareTo(elem2.getField
         }
     }
     ```
-    + These are very bulky. Creates what is often a vertical problem using 5 lines of source code for single idea
+    + bulky. Creates vertical problem using 5 lines of source code for single idea
 
 #API's (Solution)
 * Lambda expression solution
-    + Replace machinery of anonymous inner classes with a simpler mechanism by adding function types to the language
+    + Replace machinery of anonymous inner classes
+        + add simpler mechanism by adding function types to the language
     + Simplified to 
     ```Java
     CallBackHandler cd = #{ c -> System.out.println("success")};
@@ -191,15 +205,13 @@ Collections.sort(someList, (elem1, elem2) -> getField().compareTo(elem2.getField
 * Lambda expressions in Java introduce the idea of functions into the language
 * Lambdas are a powerful feature that work directly with SAM types.
 * Previously complex syntax that utilizes anonymous inner classes has been drastically simplified 
-* For the first time in Java’s history we find something that cannot be assigned to a reference of type object
+* First time in Java’s history something cannot be assigned to a reference of type object
 
 #References
-* References
-    + http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/Lambda-QuickStart/index.html
-    + http://openjdk.java.net/projects/lambda/ 
-    + http://www.lambdafaq.org/ 
-    + https://www.jcp.org/en/jsr/proposalDetails?id=335 
-    + http://cr.openjdk.java.net/~briangoetz/lambda/lambda-state-3.html 
-    + http://stackoverflow.com/questions/22637900/java8-lambdas-vs-anonymous-classes 
-* Useful links
-    + https://www.youtube.com/watch?v=a450CqNXFgs (Lambda Walkthrough)
++ http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/Lambda-QuickStart/index.html
++ http://openjdk.java.net/projects/lambda/ 
++ http://www.lambdafaq.org/ 
++ https://www.jcp.org/en/jsr/proposalDetails?id=335 
++ http://cr.openjdk.java.net/~briangoetz/lambda/lambda-state-3.html 
++ http://stackoverflow.com/questions/22637900/java8-lambdas-vs-anonymous-classes 
++ https://www.youtube.com/watch?v=a450CqNXFgs (Lambda Walkthrough)
