@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #Lambda Expressions in Java 8
 ![alt text](http://info.digitalroute.com/hs-fs/hub/376486/file-2604756124-png/Campaigns/Release_7.1/java8-logo.png?t=1460711448762&width=50)
 * Lambda also Known as closures is a new expression introduced in JDK 8 using Netbeans 7.4 IDE
@@ -6,7 +5,6 @@
 * Closures: Strictly speaking a closure is a Lambda implementation that has all free variables bound to an environment giving them a value. Lambda expressions are implemented using closures and therefore the terms are used interchangeably.
 * “But as I learned more about the subtleties of the changes, it became clear that an entire new book (Mastering Lambdas) was needed” --Maurice Naftalin (renowned author in the java community)
 * By: Austin Russell, Aubree Lytwyn, Matthew Uhlar, Ryan Smith
-=
 
 #Proposal
 * Java has a form of closures: anonymous inner classes
@@ -148,26 +146,20 @@ class compareElements implements comparator<T> {
 
 Collections.sort(someList, new compareElements())
 ```
-=======
->>>>>>> fdae09621509da916be8a382410bc70fbc32180d
 # Evolution of a Lambda (Intermediate)
 
 ```Java
 List<T> someList = ...
 
-<<<<<<< HEAD
 Collections.sort(someList, (T elem1, T elem2){ 
   return elem1.getField().compareTo(
    elem2.getField());})
-=======
 collect.sort(someList, (T e1, T e2){ return e1.field().compareTo(e2.field());})
->>>>>>> fdae09621509da916be8a382410bc70fbc32180d
 ```
 * Better, more concise. However still room for improvement
 
 ```Java
 List<T> someList = ...
-<<<<<<< HEAD
 
 Collections.sort(someList, (T elem1, T elem2) -> 
  elem1.getField().compareTo(elem2.getField()))
@@ -206,9 +198,8 @@ Collections.sort(someList, (elem1, elem2) ->
     CallBackHandler cd = #{ c -> 
      System.out.println("success")};
     ```
-
 #Summary
-* Lambda expressions in Java introduce the idea of functions into the language
+* Lambdas allow functions to be passed and stored like data
 * Lambdas are a powerful feature that work directly with SAM types.
 * Previously complex syntax that utilizes anonymous inner classes has been drastically simplified 
 * For the first time in Java’s history we find something that cannot be assigned to a reference of type object
@@ -223,8 +214,5 @@ Collections.sort(someList, (elem1, elem2) ->
     + [Stackoverflow.com](http://stackoverflow.com/questions/22637900/java8-lambdas-vs-anonymous-classes)
 * Useful s
     + [YouTube Lambda Walkthrough](https://www.youtube.com/watch?v=a450CqNXFgs)
-=======
 collect.sort(someList,(T e1, T e2) -> e1.field().compareTo(e2.field()))
 ```
-
->>>>>>> fdae09621509da916be8a382410bc70fbc32180d
