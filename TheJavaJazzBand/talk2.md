@@ -221,7 +221,7 @@ Collections.sort(someList, (elem1, elem2) ->
     + [openjdk.java.net](http://openjdk.java.net/projects/lambda/)
     + [cr.openjdk.java.net](http://cr.openjdk.java.net/~briangoetz/lambda/lambda-state-3.html)
     + [Stackoverflow.com](http://stackoverflow.com/questions/22637900/java8-lambdas-vs-anonymous-classes)
-* Useful links
+* Useful s
     + [YouTube Lambda Walkthrough](https://www.youtube.com/watch?v=a450CqNXFgs)
 =======
 collect.sort(someList,(T e1, T e2) -> e1.field().compareTo(e2.field()))
