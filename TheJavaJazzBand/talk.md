@@ -201,7 +201,7 @@ Collections.sort(someList, (elem1, elem2) ->
     ```
 
 #Summary
-* Lambda expressions in Java introduce the idea of functions into the language
+* Lambda expressions in Java allow functions to be passed and stored like data
 * Lambdas are a powerful feature that work directly with SAM types.
 * Previously complex syntax that utilizes anonymous inner classes has been drastically simplified 
 * For the first time in Java’s history we find something that cannot be assigned to a reference of type object
