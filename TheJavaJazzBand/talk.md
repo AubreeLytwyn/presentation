@@ -4,49 +4,31 @@
 * Lambda: Clear and concise way to represent a method interface using an expression
 * Closures: Strictly speaking a closure is a Lambda implementation that has all free variables bound to an environment giving them a value. Lambda expressions are implemented using closures and therefore the terms are used interchangeably.
 * “But as I learned more about the subtleties of the changes, it became clear that an entire new book (Mastering Lambdas) was needed” --Maurice Naftalin (renowned author in the java community)
-<<<<<<< HEAD
 * By: Austin Russell, Aubree Lytwyn, Matthew Uhlar
-=======
-* By: Austin Russell, Aubree Lytwyn, Matthew Uhlar, Ryan Smith
->>>>>>> c6e1a48fef70a4ded0f3337857769f8ed2a71b9d
 
 #Proposal
 * Java has a form of closures: anonymous inner classes
 * Reasons for proposal
     + Bulky syntax -> Addressed substantially for improvements
-<<<<<<< HEAD
     + Inability to capture non-final local variables
         + Allow compiler capture of effectively final local variables
     + Transparency issues: return, break, continue, 'this'
         + Making ‘this’ lexically scoped
-=======
-    + Inability to capture non-final local variables -> Allow compiler capture of effectively final local variables
-    + Transparency issues surrounding the meaning of return, break, continue and ‘this’ -> Making ‘this’ lexically scoped
->>>>>>> c6e1a48fef70a4ded0f3337857769f8ed2a71b9d
     + No nonlocal control flow operators -> Not Addressed
 
 #Proposal
 * Lambda Expressions
-<<<<<<< HEAD
     + Correcting the vertical problem with API classes and anonymous inner functions
     + Disadvantages
         + Mixing structural and nominal types
         + Divergence of library styles from callback objects to function types
         + Generic types are erased
             + show where developers are exposed to erasure
-=======
-    + Aimed at correcting the vertical problem with API classes and anonymous inner functions
-    + Disadvantages
-        + Mixing structural and nominal types
-        + Divergence of library styles from callback objects to function types
-        + Generic types are erased, which would expose additional places where developers are exposed to erasure
->>>>>>> c6e1a48fef70a4ded0f3337857769f8ed2a71b9d
 
 #What is Lambda used for?
 * Improve libraries to make iterations, filtering and data extraction easier
     + Main Example:  Collection Library
         + Concurrency features improve performance in a multicore environment
-<<<<<<< HEAD
         + lambdas: anonymous method, compact syntax 
             + omission of modifiers, return type, parameter types
 
@@ -58,14 +40,6 @@
     + Lambda can be used recursively when you are doing variable assignment. 
         + Static variable assignment
         + Assignment before use rule for local variables
-=======
-        + lambdas can be understood as a kind of anonymous method with a more compact syntax that also allows the omission of modifiers, return type, and in some cases parameter types as well.
-
-#Lambda Type
-* What is the type
-    + The target type for a lambda expression Must be a functional interface and be compatible with the target type. Same parameter type as interface function type.
-    + Lambda can be used recursively when you are doing variable assignment. Specifically static variable assignment because of the assignment before use rule for local variables
->>>>>>> c6e1a48fef70a4ded0f3337857769f8ed2a71b9d
 
 #Where can you use lambda Expressions
 * Any context that has a target type
@@ -76,30 +50,20 @@
     ```Java
     Callable<Runnable> c = () -> () -> system.out.println(“hi”);};
     ```
-<<<<<<< HEAD
     + Target type being Callable<Runnable> 
         + lambda body is the function type of Runnable 
         + Takes no arguments and returns no values
     + The expression does not allow for ambiguity 
-=======
-    + Target type being Callable<Runnable> and the the lambda body is the function type of Runnable which takes no arguments and returns no values
-    + The expression does not allow for ambiguity example
->>>>>>> c6e1a48fef70a4ded0f3337857769f8ed2a71b9d
     ```Java
          Object o = () -> {system.out.println(“hi”);};
          Object o = (Runnable) () -> {system.out.println(“hi”);};
     ```
 
 #Scoping Rules
-<<<<<<< HEAD
 * Names in the body of a lambda interpreted exactly as in its environment 
     + except for new names for the lambda expressions formal parameters. 
 * Formal parameters follow the same rules as method parameters 
     + Shadowing class and instance variables
-=======
-* Names in the body of a lambda are interpreted exactly as in the environment that it resides in. except for new names for the lambda expressions formal parameters. 
-* Formal parameters follow the same rules as method parameters for shadowing class and instance variables
->>>>>>> c6e1a48fef70a4ded0f3337857769f8ed2a71b9d
 * Example
     + Can do:
     ```Java
@@ -114,14 +78,9 @@
 
 #Functional Interfaces previously/currently known as Single Abstract Method (SAM)
 * An expression whose type can be used for a method parameter when a lambda is supplied as the actual argument
-<<<<<<< HEAD
 * An interface that has exactly one explicitly declared abstract method. 
 * This is necessary because an interface may have non-abstract default methods
 * Functional interface contains only one abstract method, can omit name of method when implemented
-=======
-* An interface that has exactly one explicitly declared abstract method. This is necessary because an interface may have non-abstract default methods
-* Because a functional interface contains only one abstract method, you can omit the name of that method when you implement it
->>>>>>> c6e1a48fef70a4ded0f3337857769f8ed2a71b9d
 * Example 
 ```java
 public interface Runnable { void run(); }
@@ -222,11 +181,7 @@ Collections.sort(someList, (elem1, elem2) -> getField().compareTo(elem2.getField
 ```
 #API's (Problems)
 * Problems with API's
-<<<<<<< HEAD
     + API classes like CallBackHandler, Runnable, etc.. use single abstract method
-=======
-    + API classes like CallBackHandler, Runnable, Callable, EventHandler or Comparator use single abstract method
->>>>>>> c6e1a48fef70a4ded0f3337857769f8ed2a71b9d
     + To utilize these you often have to write an anonymous inner class like so:
     ```Java
     foo.doSomething(new CallBackHandler()) {
@@ -235,20 +190,12 @@ Collections.sort(someList, (elem1, elem2) -> getField().compareTo(elem2.getField
         }
     }
     ```
-<<<<<<< HEAD
     + bulky. Creates vertical problem using 5 lines of source code for single idea
 
 #API's (Solution)
 * Lambda expression solution
     + Replace machinery of anonymous inner classes
         + add simpler mechanism by adding function types to the language
-=======
-    + These are very bulky. Creates what is often a vertical problem using 5 lines of source code for single idea
-
-#API's (Solution)
-* Lambda expression solution
-    + Replace machinery of anonymous inner classes with a simpler mechanism by adding function types to the language
->>>>>>> c6e1a48fef70a4ded0f3337857769f8ed2a71b9d
     + Simplified to 
     ```Java
     CallBackHandler cd = #{ c -> System.out.println("success")};
@@ -258,7 +205,6 @@ Collections.sort(someList, (elem1, elem2) -> getField().compareTo(elem2.getField
 * Lambda expressions in Java introduce the idea of functions into the language
 * Lambdas are a powerful feature that work directly with SAM types.
 * Previously complex syntax that utilizes anonymous inner classes has been drastically simplified 
-<<<<<<< HEAD
 * First time in Java’s history something cannot be assigned to a reference of type object
 
 #References
@@ -269,17 +215,3 @@ Collections.sort(someList, (elem1, elem2) -> getField().compareTo(elem2.getField
 + http://cr.openjdk.java.net/~briangoetz/lambda/lambda-state-3.html 
 + http://stackoverflow.com/questions/22637900/java8-lambdas-vs-anonymous-classes 
 + https://www.youtube.com/watch?v=a450CqNXFgs (Lambda Walkthrough)
-=======
-* For the first time in Java’s history we find something that cannot be assigned to a reference of type object
-
-#References
-* References
-    + http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/Lambda-QuickStart/index.html
-    + http://openjdk.java.net/projects/lambda/ 
-    + http://www.lambdafaq.org/ 
-    + https://www.jcp.org/en/jsr/proposalDetails?id=335 
-    + http://cr.openjdk.java.net/~briangoetz/lambda/lambda-state-3.html 
-    + http://stackoverflow.com/questions/22637900/java8-lambdas-vs-anonymous-classes 
-* Useful links
-    + https://www.youtube.com/watch?v=a450CqNXFgs (Lambda Walkthrough)
->>>>>>> c6e1a48fef70a4ded0f3337857769f8ed2a71b9d
