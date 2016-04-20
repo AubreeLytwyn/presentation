@@ -98,21 +98,6 @@ public interface Runnable { void run(); }
     + Majority of the time its used to provide stateless implementations of simgle functions
 * Many instances like those above can be replaced with lambdas but some cannot
 
-# Runnable Lambda
-* The runnable lambda expression converts five lines of code into one statement
-* Anonymous runnable Ex:
-```’Java
-Runnable r1 = new Runnable(){
-    @Override
-    Public void run(){
-    System.out.println(“Hello world one!”);
-    }
-};
-```
-```Java
-Runnable r2 = () -> 
- System.out.println(“Hello world two!”);
-```
 # Evolution of a Lambda (Naive)
 
 * Naive long form variation
@@ -147,6 +132,21 @@ List<T> someList = ...
 
 Collections.sort(someList, (elem1, elem2) -> 
  getField().compareTo(elem2.getField()))
+```
+# Runnable Lambda
+* The runnable lambda expression converts five lines of code into one statement
+* Anonymous runnable Ex:
+```’Java
+Runnable r1 = new Runnable(){
+    @Override
+    Public void run(){
+    System.out.println(“Hello world one!”);
+    }
+};
+```
+```Java
+Runnable r2 = () -> 
+ System.out.println(“Hello world two!”);
 ```
 # Comparator Lambda
 * used for sorting collections
