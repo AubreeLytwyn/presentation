@@ -47,9 +47,9 @@
     + Return Statements where target type == return Type
     + Method or constructor arguments where target type is the type of the parameter
     + Lambda expression bodies for which the target type is the type of the body
-    ```Java
-    Callable<Runnable> c = () -> () -> system.out.println(“hi”);};
-    ```
+```Java
+Callable<Runnable> c = () -> () -> system.out.println(“hi”);};
+```
     + Target type being Callable<Runnable> 
         + lambda body is the function type of Runnable 
         + Takes no arguments and returns no values

@@ -106,7 +106,6 @@ Runnable r1 = new Runnable(){
     }
 };
 ```
-
 ```Java
 Runnable r2 = () -> 
  System.out.println(“Hello world two!”);
@@ -156,10 +155,8 @@ Collections.sort(someList, (T elem1, T elem2){
 collect.sort(someList, (T e1, T e2){ return e1.field().compareTo(e2.field());})
 ```
 * Better, more concise. However still room for improvement
-
 ```Java
 List<T> someList = ...
-
 
 Collections.sort(someList, (T elem1, T elem2) -> 
  elem1.getField().compareTo(elem2.getField()))
