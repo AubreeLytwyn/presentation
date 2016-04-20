@@ -158,21 +158,9 @@ collect.sort(someList, (T e1, T e2){ return e1.field().compareTo(e2.field());})
 ```Java
 List<T> someList = ...
 
-Collections.sort(someList, (T elem1, T elem2) -> 
- elem1.getField().compareTo(elem2.getField()))
-```
-```Java
-List<T> someList = ...
-
 Collections.sort(someList, (elem1, elem2) -> 
  getField().compareTo(elem2.getField()))
 ```
-
-# Evolution of a Lambda (Final)
-
-* Final lambda
-* Types can be inferred from interface
-
 #API's (Problems)
 * Problems with API's
     + API classes like CallBackHandler, Runnable, Callable, EventHandler or Comparator use single abstract method
