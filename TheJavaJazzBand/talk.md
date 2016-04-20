@@ -133,6 +133,7 @@ List<T> someList = ...
 Collections.sort(someList, (elem1, elem2) -> 
  getField().compareTo(elem2.getField()))
 ```
+
 # Runnable Lambda
 * The runnable lambda expression converts five lines of code into one statement
 * Anonymous runnable Ex:
@@ -148,6 +149,7 @@ Runnable r1 = new Runnable(){
 Runnable r2 = () -> 
  System.out.println(“Hello world two!”);
 ```
+
 # Comparator Lambda
 * used for sorting collections
 ```java
