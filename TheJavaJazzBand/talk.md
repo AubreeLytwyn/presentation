@@ -143,7 +143,7 @@ class compareElements implements comparator<T> {
 
 Collections.sort(someList, new compareElements())
 ```
-# Evolution of a Lambda (Intermediate)
+# Evolution of a Lambda (Final)
 
 ```Java
 List<T> someList = ...
