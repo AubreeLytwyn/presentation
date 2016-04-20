@@ -113,22 +113,6 @@ Runnable r1 = new Runnable(){
 Runnable r2 = () -> 
  System.out.println(“Hello world two!”);
 ```
-
-# Comparator Lambda
-* used for sorting collections
-```java
-collections.sort(personList, (p1, p2) -> 
- p2.getSurName().compareTo(p1.getSurName()));
-```
-
-# Listener Lambda
-* Lambdas offer simple solutions to event driven programming paradigms
-* Listener lambdas can listen/ handle events inline 
-    + JButtons
-    + RadioButtons
-    + print alert / send message
-
-
 # Evolution of a Lambda (Naive)
 
 * Naive long form variation
@@ -164,6 +148,21 @@ List<T> someList = ...
 Collections.sort(someList, (elem1, elem2) -> 
  getField().compareTo(elem2.getField()))
 ```
+# Comparator Lambda
+* used for sorting collections
+```java
+collections.sort(personList, (p1, p2) -> 
+ p2.getSurName().compareTo(p1.getSurName()));
+```
+
+# Listener Lambda
+* Lambdas offer simple solutions to event driven programming paradigms
+* Listener lambdas can listen/ handle events inline 
+    + JButtons
+    + RadioButtons
+    + print alert / send message
+
+
 #API's (Problems)
 * Problems with API's
     + API classes like CallBackHandler, Runnable, Callable, EventHandler or Comparator use single abstract method
