@@ -1,8 +1,11 @@
-#Lambda Expressions in Java 8
+#Intro
+* Lambda Expressions in Java 8
+* By: Austin Russell, Aubree Lytwyn, Matthew Uhlar, Ryan Smith
+
+#Intro to Lambdas
 * Lambda also Known as closures is a new expression introduced in JDK 8 using Netbeans 7.4 IDE
 * Lambda: Clear and concise way to represent a method interface using an expression
 * Closures: Strictly speaking a closure is a Lambda implementation that has all free variables bound to an environment giving them a value. Lambda expressions are implemented using closures and therefore the terms are used interchangeably.
-* By: Austin Russell, Aubree Lytwyn, Matthew Uhlar, Ryan Smith
 
 #Proposal
 * Java has a form of closures: anonymous inner classes
