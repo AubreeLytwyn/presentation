@@ -2,7 +2,6 @@
 * Lambda also Known as closures is a new expression introduced in JDK 8 using Netbeans 7.4 IDE
 * Lambda: Clear and concise way to represent a method interface using an expression
 * Closures: Strictly speaking a closure is a Lambda implementation that has all free variables bound to an environment giving them a value. Lambda expressions are implemented using closures and therefore the terms are used interchangeably.
-* “But as I learned more about the subtleties of the changes, it became clear that an entire new book (Mastering Lambdas) was needed” --Maurice Naftalin (renowned author in the java community)
 * By: Austin Russell, Aubree Lytwyn, Matthew Uhlar, Ryan Smith
 
 #Proposal
@@ -165,19 +164,18 @@ List<T> someList = ...
 Collections.sort(someList, (T elem1, T elem2) -> 
  elem1.getField().compareTo(elem2.getField()))
 ```
-* We can do better still...
-
-# Evolution of a Lambda (Final)
-
-* Final lambda
-* Types can be inferred from interface
-
 ```Java
 List<T> someList = ...
 
 Collections.sort(someList, (elem1, elem2) -> 
  getField().compareTo(elem2.getField()))
 ```
+
+# Evolution of a Lambda (Final)
+
+* Final lambda
+* Types can be inferred from interface
+
 #API's (Problems)
 * Problems with API's
     + API classes like CallBackHandler, Runnable, Callable, EventHandler or Comparator use single abstract method
