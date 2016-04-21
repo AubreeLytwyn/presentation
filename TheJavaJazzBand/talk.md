@@ -37,10 +37,7 @@
 #Where can you use lambda Expressions
 * Any context that has a target type
     + Ex: Variable Declarations and array initializers
-    + Return Statements where target type == return Type
-    + Method or constructor arguments where target type is the type of the parameter
-    + Lambda expression bodies for which the target type is the type of the body
-    ```Java
+   ```Java
     Callable<Runnable> c = () ->
      () -> system.out.println(“hi”);};
     ```
@@ -53,7 +50,6 @@
     ```
 
 #Scoping Rules
-* Names in the body of a lambda are interpreted exactly as in the environment that it resides in. except for new names for the lambda expressions formal parameters. 
 * Formal parameters follow the same rules as method parameters for shadowing class and instance variables
 * Example
     + Can do:
