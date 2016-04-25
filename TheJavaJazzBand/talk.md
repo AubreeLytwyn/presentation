@@ -31,9 +31,8 @@
 
 #Lambda Type
 * What is the type
-    + The target type for a lambda expression Must be a functional interface and be compatible with the target type. Same parameter type as interface function type.
-    + Lambda can be used recursively when you are doing variable assignment. Specifically static variable assignment because of the assignment before use rule for local variables
-
+    + Functional interface
+    + Lambda can be used recursively, specifically static variable assignment.
 #Where can you use lambda Expressions
 * Any context that has a target type
     + Ex: Variable Declarations and array initializers
@@ -41,8 +40,7 @@
     Callable<Runnable> c = () ->
      () -> system.out.println(“hi”);};
     ```
-    + Target type being Callable<Runnable> and the the lambda body is the function type of Runnable which takes no arguments and returns no values
-    + The expression does not allow for ambiguity example
+     + The expression does not allow for ambiguity example
     ```Java
     Object o = () -> {system.out.println(“hi”);};
     Object o = (Runnable) () -> 
@@ -50,23 +48,20 @@
     ```
 
 #Scoping Rules
-* Formal parameters follow the same rules as method parameters for shadowing class and instance variables
+* Follow the same rules as method parameters for shadowing class
 * Example
     + Can do:
     ```Java
     Class Bar { int i; Foo foo = i -> i*4; };
     ```
-    + Lambda parameter i shadows the instance variable
     + Can’t do:
-    ```Java
+    ``Java
          Void bar() {int i; Foo foo = i -> i *4; };
     ```
-    + Illegal because I is already defined and with local variables shadowing is not possible
-
+    
 #Functional Interfaces previously/currently known as Single Abstract Method (SAM)
-* An expression whose type can be used for a method parameter when a lambda is supplied as the actual argument
-* An interface that has exactly one explicitly declared abstract method. This is necessary because an interface may have non-abstract default methods
-* Because a functional interface contains only one abstract method, you can omit the name of that method when you implement it
+* Type can be used for a method parameter when a lambda is supplied as the argument
+* One explicitly declared abstract method, can omit the name of method when you implement it
 * Example 
 ```java
 public interface Runnable { void run(); }
@@ -77,7 +72,6 @@ public interface Runnable { void run(); }
 * Basic syntax
     + (parameters) -> expression
     ```Java
-    // takes two integers and returns their sum
     (int x, int y) -> x+y 
     ```
 
