@@ -33,11 +33,12 @@
 * What is the type
     + Functional interface
     + Lambda can be used recursively, specifically static variable assignment.
+
 #Where can you use lambda Expressions
 * Any context that has a target type
     + Ex: Variable Declarations and array initializers
-   ```Java
-    Callable<Runnable> c = () ->
+    ```Java
+     Callable<Runnable> c = () ->
      () -> system.out.println(“hi”);};
     ```
      + The expression does not allow for ambiguity example
