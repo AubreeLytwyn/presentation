@@ -56,7 +56,7 @@
     Class Bar { int i; Foo foo = i -> i*4; };
     ```
     + Can’t do:
-    ``Java
+   ```Java
          Void bar() {int i; Foo foo = i -> i *4; };
     ```
     
